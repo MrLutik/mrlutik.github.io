@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Yevhen Yakubovskyi">
+  <meta name="description" content="Creating GPG key for signing deb packages | Creating GPG finger print Sysinfo: 1 2 3Kernel: 5.13.0-27-generic x86_64 Bits: 64 Desktop: Unity Distro:...">
+
+  <link rel="stylesheet" type="text/css" href="../theme/css/styles.425931e9.min.css">
+
+  <script src="../theme/js/scripts.ab06d70e.min.js" type="text/javascript"></script>
+
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+  <link href="/feeds/all.rss" type="application/rss+xml" rel="alternate" title="Yevhen Yakubovskyi Full RSS Feed" />
+
+<meta name="keywords" content="gpg, packages">
+
+  <title>Creating GPG key for signing deb packages | Yevhen Yakubovskyi</title>
+
+</head>
+
+<body>
+  <aside>
+    <div id="user_meta">
+      <a href="..">
+      </a>
+      <h2><a href=".." class="nohover">Yevhen Yakubovskyi</a></h2>
+      <p>Software Developer</p>
+      <div class="social">
+          <a href="https://github.com/MrLutik" title="GitHub" target="_blank" rel="noopener noreferrer"><i class="fa fa-github fa-lg"></i></a>
+          <a data-email="moc.liamg@yinegveiay:otliam" data-title="Email" title="You need javascript enabled to view this email" class="email" target="_blank" rel="noopener noreferrer"><i class="fa fa-envelope fa-lg"></i></a>
+      </div>
+      <ul>
+      </ul>
+    </div>
+  </aside>
+
+  <main id="main">
+    <header>
+      <p id="header">
+      <a href="..">Home</a>
+
+      &#124; <a href="../blog/index.html">Blog</a>
+      &#124; <a href="/feeds/all.rss">RSS Feed</a>
+      </p>
+<p>
+<a href="../blog/index.html">Posts</a>
+&#124; <a href="../blog/tags/">Tags</a>
+&#124; <a href="../blog/archives.html">Archive</a>
+</p>    </header>
+
+<article>
+  <div class="article_title">
+    <h1><a href="../blog/GPG key.html" class="nohover">Creating GPG key for signing deb packages</a></h1>
+  </div>
+  <div class="article_text">
+    <h1>Creating GPG finger print</h1>
+<p>Sysinfo:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>Kernel: 5.13.0-27-generic x86_64 
+Bits: 64 Desktop: Unity 
+Distro: Ubuntu 20.04.3 LTS (Focal Fossa)
+</code></pre></div>
+</td></tr></table>
+<p>First of all we need to get gpg2 package.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>sudo apt install gpg2
+</code></pre></div>
+</td></tr></table>
+<p>Version:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>gpg (GnuPG) 2.2.19
+</code></pre></div>
+</td></tr></table>
+<p>To generate the key:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>gpg --full-generate-key
+</code></pre></div>
+</td></tr></table>
+<p>After follwing instruction from the cli I got this:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>pub   rsa4096 2022-01-27 [SC] [expires: 2023-01-27]
+      638024340EBA291A1B0B7C0AEDCEBB4AB7C11242
+uid   Yevhen Yakubovskyi (signing deb package for further placement on github) &lt;yaievgeniy@gmail.com&gt;
+sub   rsa4096 2022-01-27 [E] [expires: 2023-01-27]
+</code></pre></div>
+</td></tr></table>
+<p>To check if key was generated:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>gpg --list-secret-keys --keyid-format=long
+</code></pre></div>
+</td></tr></table>
+<p>Now I will add GPG key to github followinf this <a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/adding-a-new-gpg-key-to-your-github-account">link</a>.</p>
+  </div>
+<div class="article_meta">
+  <p>Posted <time data-timeago datetime="2022-01-27T17:01:00+02:00">чт 27 січня 2022</time>
+   by Yevhen Yakubovkiy  </p>
+  <p>Last updated <time data-timeago datetime="2022-01-27T17:01:00+02:00">чт 27 січня 2022</time></p>
+  <p>
+  Tags:
+    <a href="../blog/tags/packages.html">packages</a>,    <a href="../blog/tags/gpg.html">gpg</a>  </p>
+</div>
+  <div id="article_comments">
+    <div id="disqus_thread">
+      <a href="javascript:loadDisqus()"><i class="fa fa-comments fa-lg"></i>Click to load <span class="disqus-comment-count" data-disqus-identifier="blog/GPG key.html">comments</span></a>
+    </div>
+  </div>
+
+  <script id="dsq-count-scr" src="https://mrlutik.disqus.com/count.js" async></script>
+  <script type="text/javascript">
+    var disqus_config = function () {
+        this.page.identifier = "blog/GPG key.html";
+        this.page.title = "Creating GPG key for signing deb packages";
+    };
+    loadDisqus = function(sitename) {
+      var d = document, s = d.createElement('script');
+      s.src = 'https://mrlutik.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    };
+  </script>
+</article>
+
+
+    <div id="ending_message">
+        <p>&copy; Yevhen Yakubovskyi. Built using <a href="http://getpelican.com">Pelican</a>. Theme is <a href="https://github.com/pR0Ps/pelican-subtle">subtle</a> by <a href="http://cmetcalfe.ca">Carey Metcalfe</a>. Based on <a href="https://github.com/giulivo/pelican-svbhack">svbhack</a> by Giulio Fidente.</p>
+    </div>
+  </main>
+
+  <script type="text/javascript">
+    window.addEventListener('load', skipHeader)
+  </script>
+
+  <script type="text/javascript">
+  window.addEventListener('load', unmangleEmail)
+  </script>
+
+<script type="text/javascript">window.addEventListener("load", lw_timeago);</script>
+</body>
+</html>
